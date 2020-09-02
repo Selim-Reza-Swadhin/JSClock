@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP Rating System in ajax, jquery & mysql.</title>
+    <link rel="stylesheet" href="font-css/LineIcons.css">
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("li").mouseover(function () {
+                let current = $(this);
+                $("li").each(function (index) {
+                    $(this).addClass("hovered-stars");
+                    if (index == current.index()) {
+                        return false;
+                    }
+                });
+            });
+
+            $("li").mouseleave(function () {
+                $("li").removeClass("hovered-stars");
+            });
+
+            $("li").click(function () {
+                $("li").removeClass("clicked-stars");
+                $(".hovered-stars").addClass("clicked-stars");
+                $("#message").html("Thanks! You have rated this "+ "<span style='color: green'>"+$(".clicked-stars").length+"</span>" +" star(s).");
+            });
+        });
+
+    </script>
+    <style>
+        #container {
+            width: 400px;
+            height: 250px;
+            margin: 50px auto;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            font-size: 35px;
+            padding: 10px;
+            color: #ccc;
+        }
+
+        #message {
+            font-size: 20px;
+        }
+
+        .hovered-stars {
+            color: #FFCC36;
+        }
+
+        .clicked-stars {
+            color: saddlebrown;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li><i class="lni lni-star-filled"></i></li>
+        <li><i class="lni lni-star-filled"></i></li>
+        <li><i class="lni lni-star-filled"></i></li>
+        <li><i class="lni lni-star-filled"></i></li>
+        <li><i class="lni lni-star-filled"></i></li>
+    </ul>
+    <div id="message">Please rate your overall experience!</div>
+</div>
+
+</body>
+</html>

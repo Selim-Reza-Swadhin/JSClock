@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countdown to My Coming Birthday</title>
+    <style>
+        body{
+            background: #161616;
+        }
+        .countdownCounter{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            text-align: center;
+            background: #ddd;
+            border: 1px solid #999999;
+            padding: 10px;
+            box-shadow: 0 0 5px 3px #ccc;
+        }
+        .info{
+            font-size: 80px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<table class="countdownCounter" border="1" style="border: 1px solid lime; background: url('6.jpg')">
+    <tr class="info">
+        <td colspan="4">Countdown to My <span style="color: forestgreen">Birthday</span> 2020</td>
+    </tr>
+    <tr class="info">
+        <td id="days"></td>
+        <td id="hours"></td>
+        <td id="minutes"></td>
+        <td id="seconds"></td>
+    </tr>
+    <tr>
+        <td style="background: lightcoral; color: #fff">Days</td>
+        <td style="background: blueviolet; color: #fff">Hours</td>
+        <td style="background: greenyellow; color: #333">Minutes</td>
+        <td style="background: cornflowerblue; color: #fff">Seconds</td>
+    </tr>
+</table>
+
+<script>
+    function countdown() {
+        let now = new Date();
+        let eventDate = new Date('2020 Oct 12');
+
+        let currentTiime = now.getTime();
+        let eventTime = eventDate.getTime();
+
+        let realTime = eventTime - currentTiime;
+
+        let s = Math.floor(realTime / 1000);
+        let m = Math.floor(s / 60);
+        let h = Math.floor(m / 60);
+        let d = Math.floor(h / 24);
+
+        h %= 24;
+        m %= 60;
+        s %= 60;
+
+        h = (h < 10) ? '0' + h : h;
+        m = (m < 10) ? '0' + m : m;
+        s = (s < 10) ? '0' + s : s;
+
+        document.getElementById('days').textContent = d;
+        document.getElementById('days').innerText = d;
+
+        document.getElementById('hours').textContent = h;
+        document.getElementById('minutes').textContent = m;
+        document.getElementById('seconds').textContent = s;
+
+        setTimeout(countdown, 1000);
+    }
+    countdown();
+
+    // setInterval(function () {
+    //     countdown();
+    // }, 1000);
+</script>
+</body>
+</html>

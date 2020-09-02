@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Coming Soon Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">Brand Name</a>
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+        </ul>
+    </nav>
+</header>
+    <section>
+    <img src="assets/curve.png" alt="no image" class="wave">
+    <div class="contentBx">
+        <h2>Coming Soon</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet cupiditate iure laborum laudantium numquam
+            odio pariatur quas reiciendis sunt unde, voluptatem.</p>
+        <div class="countdown">
+            <div class="time"><div id="day"></div><span>Days</span></div>
+            <div class="time"><div id="hour"></div><span>Hours</span></div>
+            <div class="time"><div id="minute"></div><span>Minutes</span></div>
+            <div class="time"><div id="second"></div><span>Seconds</span></div>
+        </div>
+        <a href="#" onclick="toggle();">Notify Me!</a>
+    </div>
+    <div class="imgBx">
+        <img src="assets/man.png" alt="no image">
+    </div>
+    <ul class="sci">
+        <li><a href=""><img src="assets/facebook.png" alt=""></a></li>
+        <li><a href=""><img src="assets/twitter.png" alt=""></a></li>
+        <li><a href=""><img src="assets/instagram.png" alt=""></a></li>
+    </ul>
+</section>
+<div class="newsletter">
+    <h2>Stay Tuned</h2>
+    <p>Get notified at launch</p>
+    <div class="inputBox">
+        <form action="">
+            <input type="text" name="" required="" placeholder="What's on your mind?">
+            <br>
+            <input type="text" name="" required="" placeholder="Enter Email Address">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <img src="assets/close.png" alt="no image" class="close" onclick="toggle();">
+</div>
+
+<script>
+    function toggle(){
+        let newsletter = document.querySelector('.newsletter')
+            newsletter.classList.toggle('active');
+    }
+
+
+    let countDate = new Date('Jan 1, 2021 00:00:00').getTime();
+    function newYear(){
+        let now = new Date().getTime();
+        let gap = countDate - now;
+
+        let second = 1000;
+        let minute = second * 60;
+        let hour = minute * 60;
+        let day = hour * 24;
+
+        let d = Math.floor(gap / (day));
+        let h = Math.floor((gap % (day)) / (hour));
+        let m = Math.floor((gap % (hour)) / (minute));
+        let s = Math.floor((gap % (minute)) / (second));
+
+        document.getElementById('day').innerText = d;
+        document.getElementById('hour').innerText = h;
+        document.getElementById('minute').innerText = m;
+        document.getElementById('second').innerText = s;
+    }
+    setInterval(function (){
+        newYear();
+    }, 1000);
+</script>
+</body>
+</html>

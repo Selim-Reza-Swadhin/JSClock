@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Year Coming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h2><span>Countdown to My Birthday</span> 2020</h2>
+    <div class="countdown">
+        <div id="day"></div>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+</div>
+
+<script>
+    let countDate = new Date('Oct 12, 2020 00:00:00').getTime();
+
+    function newYear() {
+        let now = new Date().getTime();
+        gap = countDate - now;
+
+        let second = 1000;
+        let minute = second * 60;
+        let hour = minute * 60;
+        let day = hour * 24;
+
+        let d = Math.floor(gap / (day));
+        let h = Math.floor(gap % (day) / (hour));
+        let m = Math.floor(gap % (hour) / (minute));
+        let s = Math.floor(gap % (minute) / second);
+
+        document.getElementById('day').innerText = d;
+        document.getElementById('hour').innerText = h;
+        document.getElementById('minute').innerText = m;
+        document.getElementById('second').innerText = s;
+
+        setTimeout(newYear, 1000);
+    };
+    newYear();
+
+    // setInterval(function () {
+    //     newYear();
+    // }, 1000);
+
+</script>
+</body>
+</html>
